@@ -1,9 +1,11 @@
 require 'net/http'
 require 'uri'
 require 'json'
+require 'yaml'
 
-
-
+world_endpoint = 'https://vrchat.net/api/1/worlds/'
+vrc_public_api_key = 'JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26'
+parsed_worlds = YAML.load_file('config/target_world.yml') 
 
 def get_json(location, limit = 10)
   raise ArgumentError, 'too many HTTP redirects' if limit == 0
@@ -32,5 +34,8 @@ def get_json(location, limit = 10)
   end
 end
 
-puts get_json('https://vrchat.net/api/1/worlds/wrld_12740759-476d-41f1-92aa-6855e997837c?apiKey=JlE5Jldo5Jibnk5O5hTx6XVqsJu4WJ26')
-
+for world_id in parsed_worlds
+  puts get_json("#{world_endpoint}#{world_id}?apiKey=#{vrc_public_api_key}")
+end
+  
+  
