@@ -2,6 +2,7 @@
 
 This is a batch to output occupants of the targeted vrchat worlds.
 
+This is already imorted in [vrchat-visitors-record](https://github.com/whisky-shusuky/vrchat-visitors-record) .
 
 # Prerequisites
 You have to be able to use ruby.
